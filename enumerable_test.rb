@@ -1,5 +1,6 @@
 require 'minitest/spec'
 require 'minitest/autorun'
+require 'minitest/pride'
 require_relative 'lib/de_enumerable'
 require_relative 'lib/book'
 
@@ -18,23 +19,34 @@ describe "Enumerable" do
     @reimplements_enumerable = ReimplementEnumerable.new(@books)
   end
 
-  it "implements select correctly" do
-    short_books = [@h2g2, @pride]
-
-    assert_equal short_books, @reimplements_enumerable.select { |book| book.page_count < 500 }
-  end
-
-  it "implements all? correctly" do
-    skip
+  it "implements all? correctly when results are true" do
     results = @reimplements_enumerable.all? { |book| book.year > 1800 }
 
     assert_equal true, results
+  end
+
+  it "implements all? correctly when the results are false" do
+    results = @reimplements_enumerable.all? { |book| book.year == 1800 }
+
+    assert_equal false, results
   end
 
   it "implements count correctly" do
     results = @reimplements_enumerable.count { |book| book.page_count > 300 }
 
     assert_equal 3, results
+  end
+
+  it "implements count correctly" do
+    results = @reimplements_enumerable.count { |book| book.page_count == 1225 }
+
+    assert_equal 1, results
+  end
+
+  it "implements count correctly" do
+    results = @reimplements_enumerable.count { |book| book.page_count > 3000 }
+
+    assert_equal 0, results
   end
 
   it "implements find correctly when there is a match" do
@@ -113,6 +125,7 @@ describe "Enumerable" do
   end
 
   it "implements max_by correctly" do
+    skip
     results = @h2g2
 
     assert_equal results, @reimplements_enumerable.max_by { |book| book.year }

@@ -31,15 +31,33 @@ class ReimplementEnumerable
   def count
     result = 0
     @collection.each do |element|
-      yield(element)
-      if yield(element)
+      count_it = yield(element)
+      if count_it
         result += 1
       end
     end
     result
   end
 
+  def max_by
+    result = nil
+    @collection.each do |element|
+      max = yield(element)
+      if result == nil || result < max
+        result = max
+      end
+    end
+    result
+  end
 
-  # The rest of the code for all the enumerables
-  # you must write go here
+  def all?
+    result = []
+    @collection.each do |element|
+      item = yield(element)
+      if item
+        result << element
+      end
+    end
+    result == @collection
+  end
 end
