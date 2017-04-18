@@ -118,7 +118,6 @@ describe "Enumerable" do
   end
 
   it "implements map correctly" do
-    skip
     results = [1869, 1979, 1851, 1813]
 
     assert_equal results, @reimplements_enumerable.map { |book| book.year }

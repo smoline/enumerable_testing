@@ -62,4 +62,13 @@ class ReimplementEnumerable
     end
     result
   end
+
+  def map
+    result = []
+    @collection.each do |element|
+      map_to = yield(element)
+      result << map_to
+    end
+    result
+  end
 end
