@@ -71,4 +71,25 @@ class ReimplementEnumerable
     end
     result
   end
+
+  def each_with_index
+    index = 0
+    @collection.each do |element|
+      yield(element, index)
+      index += 1
+    end
+  end
+
+  def min_by
+    result = nil
+    new_min = nil
+    @collection.each do |element|
+      min = yield(element)
+      while result.nil? || new_min > min
+        new_min = min
+        result = element
+      end
+    end
+    result
+  end
 end
