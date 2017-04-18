@@ -62,6 +62,7 @@ describe "Enumerable" do
   end
 
   it "implements each_with_index correctly" do
+    
     object_results = []
     index_results = []
 
