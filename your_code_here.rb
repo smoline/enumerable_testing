@@ -16,6 +16,10 @@ class ReimplementEnumerable
     return result
   end
 
+  def find
+    result = nil
+  end
+
   # The rest of the code for all the enumerables
   # you must write go here
 end
