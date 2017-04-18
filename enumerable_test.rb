@@ -32,14 +32,12 @@ describe "Enumerable" do
   end
 
   it "implements count correctly" do
-    skip
     results = @reimplements_enumerable.count { |book| book.page_count > 300 }
 
     assert_equal 3, results
   end
 
   it "implements find correctly when there is a match" do
-    skip
     results = @reimplements_enumerable.find { |book| book.year > 1970 }
 
     assert_equal @h2g2, results
@@ -115,7 +113,6 @@ describe "Enumerable" do
   end
 
   it "implements max_by correctly" do
-    skip
     results = @h2g2
 
     assert_equal results, @reimplements_enumerable.max_by { |book| book.year }
