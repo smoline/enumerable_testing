@@ -93,11 +93,6 @@ class ReimplementEnumerable
     result
   end
 
-  def drop(arg)
-    count = 0
-    array = []
-  end
-
   def find_index
     index = 0
     result = nil
@@ -108,6 +103,18 @@ class ReimplementEnumerable
         break
       end
       index += 1
+    end
+    result
+  end
+
+  def drop(arg)
+    count = 0
+    result = []
+    @collection.each do |element|
+      if count >= arg
+        result << element
+      end
+      count += 1
     end
     result
   end

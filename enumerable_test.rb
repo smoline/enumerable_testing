@@ -83,7 +83,7 @@ describe "Enumerable" do
   end
 
   it "implements drop correctly" do
-    skip
+
     assert_equal [@moby_dick, @pride], @reimplements_enumerable.drop(2)
   end
 
