@@ -125,7 +125,6 @@ describe "Enumerable" do
   end
 
   it "implements max_by correctly" do
-    skip
     results = @h2g2
 
     assert_equal results, @reimplements_enumerable.max_by { |book| book.year }

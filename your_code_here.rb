@@ -39,17 +39,6 @@ class ReimplementEnumerable
     result
   end
 
-  def max_by
-    result = nil
-    @collection.each do |element|
-      max = yield(element)
-      if result == nil || result < max
-        result = max
-      end
-    end
-    result
-  end
-
   def all?
     result = []
     @collection.each do |element|
@@ -59,5 +48,18 @@ class ReimplementEnumerable
       end
     end
     result == @collection
+  end
+
+  def max_by
+    result = nil
+    new_max = nil
+    @collection.each do |element|
+      max = yield(element)
+      while result.nil? || new_max < max
+        new_max = max
+        result = element
+      end
+    end
+    result
   end
 end
