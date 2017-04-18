@@ -20,49 +20,56 @@ describe "Enumerable" do
   end
 
   it "implements all? correctly when results are true" do
+
     results = @reimplements_enumerable.all? { |book| book.year > 1800 }
 
     assert_equal true, results
   end
 
   it "implements all? correctly when the results are false" do
+
     results = @reimplements_enumerable.all? { |book| book.year == 1800 }
 
     assert_equal false, results
   end
 
   it "implements count correctly" do
+
     results = @reimplements_enumerable.count { |book| book.page_count > 300 }
 
     assert_equal 3, results
   end
 
   it "implements count correctly" do
+
     results = @reimplements_enumerable.count { |book| book.page_count == 1225 }
 
     assert_equal 1, results
   end
 
   it "implements count correctly" do
+
     results = @reimplements_enumerable.count { |book| book.page_count > 3000 }
 
     assert_equal 0, results
   end
 
   it "implements find correctly when there is a match" do
+
     results = @reimplements_enumerable.find { |book| book.year > 1970 }
 
     assert_equal @h2g2, results
   end
 
   it "implements find correctly when there is not a match" do
+
     results = @reimplements_enumerable.find { |book| book.year < 1492 }
 
     assert_nil results
   end
 
   it "implements each_with_index correctly" do
-    
+
     object_results = []
     index_results = []
 
@@ -88,14 +95,14 @@ describe "Enumerable" do
   end
 
   it "implements find index correctly when there is a match" do
-    skip
+
     results = @reimplements_enumerable.find_index { |book| book.year == 1851 }
 
     assert_equal 2, results
   end
 
   it "implements find index correctly when there is no match" do
-    skip
+
     results = @reimplements_enumerable.find_index { |book| book.year == 2017 }
 
     assert_nil @reimplements_enumerable.find { |book| book.year == 2017 }
@@ -118,18 +125,21 @@ describe "Enumerable" do
   end
 
   it "implements map correctly" do
+
     results = [1869, 1979, 1851, 1813]
 
     assert_equal results, @reimplements_enumerable.map { |book| book.year }
   end
 
   it "implements max_by correctly" do
+
     results = @h2g2
 
     assert_equal results, @reimplements_enumerable.max_by { |book| book.year }
   end
 
   it "implements min_by correctly" do
+
     results = @pride
 
     assert_equal results, @reimplements_enumerable.min_by { |book| book.year }

@@ -92,4 +92,23 @@ class ReimplementEnumerable
     end
     result
   end
+
+  def drop(arg)
+    count = 0
+    array = []
+  end
+
+  def find_index
+    index = 0
+    result = nil
+    @collection.each do |element|
+      should_find = yield(element)
+      if should_find
+        result = index
+        break
+      end
+      index += 1
+    end
+    result
+  end
 end
