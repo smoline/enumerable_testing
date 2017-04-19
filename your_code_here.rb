@@ -132,7 +132,7 @@ class ReimplementEnumerable
     result = []
     @collection.each do |element|
       drop_it = yield(element)
-      unless drop_it
+      if drop_it
         result << element
       end
     end

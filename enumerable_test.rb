@@ -91,7 +91,7 @@ describe "Enumerable" do
 
     results = @reimplements_enumerable.drop_while { |book| book.year < 1900 }
 
-    assert_equal [@h2g2, @moby_dick, @pride], results
+    assert_equal [@war_and_peace, @moby_dick, @pride], results
   end
 
   it "implements find index correctly when there is a match" do
