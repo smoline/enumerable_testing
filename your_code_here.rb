@@ -181,4 +181,14 @@ class ReimplementEnumerable
     end
     return result = [array1, array2]
   end
+
+  def one?
+    result = false
+    @collection.each do |element|
+      if yield(element)
+        result = true
+      end
+    end
+    result
+  end
 end

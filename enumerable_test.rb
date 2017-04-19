@@ -165,6 +165,16 @@ describe "Enumerable" do
 
     assert_equal results, @reimplements_enumerable.partition { |book| book.year > 1860 }
   end
-  # one?
+
+  it "implements one? correctly when true" do
+
+    assert_equal true, @reimplements_enumerable.one? { |book| book.page_count == 1225 }
+  end
+
+  it "implements one? correctly when false" do
+
+    assert_equal false, @reimplements_enumerable.one? { |book| book.year == 1900 }
+  end
+
   # none?
 end
