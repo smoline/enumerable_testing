@@ -127,4 +127,26 @@ class ReimplementEnumerable
     end
     return false
   end
+
+  def drop_while
+    result = []
+    @collection.each do |element|
+      drop_it = yield(element)
+      unless drop_it
+        result << element
+      end
+    end
+    result
+  end
+
+  def reject
+    result = []
+    @collection.each do |element|
+      reject_it = yield(element)
+      unless reject_it
+        result << element
+      end
+    end
+    result
+  end
 end

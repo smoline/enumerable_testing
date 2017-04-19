@@ -88,7 +88,7 @@ describe "Enumerable" do
   end
 
   it "implements drop_while correctly" do
-    skip
+
     results = @reimplements_enumerable.drop_while { |book| book.year < 1900 }
 
     assert_equal [@h2g2, @moby_dick, @pride], results
@@ -146,7 +146,7 @@ describe "Enumerable" do
   end
 
   it "implements reject correctly" do
-    skip
+
     short_books = [@h2g2, @pride]
 
     assert_equal short_books, @reimplements_enumerable.reject { |book| book.page_count > 500 }
