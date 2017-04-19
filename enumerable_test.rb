@@ -91,7 +91,7 @@ describe "Enumerable" do
 
     results = @reimplements_enumerable.drop_while { |book| book.year < 1900 }
 
-    assert_equal [@war_and_peace, @moby_dick, @pride], results
+    assert_equal [@h2g2, @moby_dick, @pride], results
   end
 
   it "implements find index correctly when there is a match" do
@@ -152,8 +152,16 @@ describe "Enumerable" do
     assert_equal short_books, @reimplements_enumerable.reject { |book| book.page_count > 500 }
   end
 
-  # reverse_each
-  # partition
+  it "implements reverse_each correctly" do
+
+    new_books_array = [@pride, @moby_dick, @h2g2, @war_and_peace]
+
+    assert_equal new_books_array, @reimplements_enumerable.reverse_each
+  end
+
+  it "implements partition correctly" do
+    
+  end
   # one?
   # none?
 end

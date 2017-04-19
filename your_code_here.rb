@@ -129,14 +129,15 @@ class ReimplementEnumerable
   end
 
   def drop_while
-    result = []
+    index = 0
     @collection.each do |element|
-      drop_it = yield(element)
-      if drop_it
-        result << element
+      result = yield(element)
+      unless result
+        return @collection[index..-1]
       end
+      index += 1
     end
-    result
+    return []
   end
 
   def reject
@@ -146,6 +147,22 @@ class ReimplementEnumerable
       unless reject_it
         result << element
       end
+    end
+    result
+  end
+
+  def reverse_each
+    result = []
+    index = 0
+    array = []
+    @collection.each do |element|
+      index += 1
+      array << element
+    end
+    index -= 1
+    while index >= 0
+      result << array[index]
+      index -= 1
     end
     result
   end
