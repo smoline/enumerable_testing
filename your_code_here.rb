@@ -191,4 +191,14 @@ class ReimplementEnumerable
     end
     result
   end
+
+  def none?
+    result = true
+    @collection.each do |element|
+      if yield(element)
+        result = false
+      end
+    end
+    result
+  end
 end

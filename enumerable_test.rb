@@ -176,5 +176,13 @@ describe "Enumerable" do
     assert_equal false, @reimplements_enumerable.one? { |book| book.year == 1900 }
   end
 
-  # none?
+  it "implements none? correctly when false" do
+
+    assert_equal false, @reimplements_enumerable.none? { |book| book.page_count == 1225 }
+  end
+
+  it "implements none? correctly when true" do
+
+    assert_equal true, @reimplements_enumerable.none? { |book| book.year == 1900 }
+  end
 end
