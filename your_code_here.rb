@@ -166,4 +166,19 @@ class ReimplementEnumerable
     end
     result
   end
+
+  def partition
+    array1 = []
+    array2 = []
+    result = []
+    @collection.each do |element|
+      partition_it = yield(element)
+      if partition_it
+        array1 << element
+      else
+        array2 << element
+      end
+    end
+    return result = [array1, array2]
+  end
 end

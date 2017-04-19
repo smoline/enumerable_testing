@@ -160,7 +160,10 @@ describe "Enumerable" do
   end
 
   it "implements partition correctly" do
-    
+
+    results = [[@war_and_peace, @h2g2], [@moby_dick, @pride]]
+
+    assert_equal results, @reimplements_enumerable.partition { |book| book.year > 1860 }
   end
   # one?
   # none?
