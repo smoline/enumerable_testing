@@ -118,4 +118,13 @@ class ReimplementEnumerable
     end
     result
   end
+
+  def include?(arg)
+    @collection.each do |element|
+      if element == arg
+        return true
+      end
+    end
+    return false
+  end
 end
