@@ -152,11 +152,24 @@ describe "Enumerable" do
     assert_equal short_books, @reimplements_enumerable.reject { |book| book.page_count > 500 }
   end
 
-  it "implements reverse_each correctly" do
+  it "implements reverse_each correctly based on yield" do
 
-    new_books_array = [@pride, @moby_dick, @h2g2, @war_and_peace]
+    # Look to see that reverse_each yields each element in reverse order
+    reversed_array = []
+    @reimplements_enumerable.reverse_each { |book| reversed_array << book }
 
-    assert_equal new_books_array, @reimplements_enumerable.reverse_each
+    expected_books_array = [@pride, @moby_dick, @h2g2, @war_and_peace]
+    assert_equal expected_books_array, reversed_array
+  end
+
+  it "implements reverse_each correctly based on the RETURN value" do
+
+    expected_books_array = [@pride, @moby_dick, @h2g2, @war_and_peace]
+
+    # See that reverse_each returns the array reversed
+    what_does_reverse_each_return = @reimplements_enumerable.reverse_each { |book| book }
+
+    assert_equal expected_books_array, what_does_reverse_each_return
   end
 
   it "implements partition correctly" do
@@ -185,4 +198,12 @@ describe "Enumerable" do
 
     assert_equal true, @reimplements_enumerable.none? { |book| book.year == 1900 }
   end
+
+  it "implements each_slice correctly" do
+    skip
+    results = [@war_and_peace, @h2g2] [@moby_dick, @pride]
+
+    assert_equal results, @reimplements_enumerable.each_slice(2) { |book| p book }
+  end
+  # slice_before
 end

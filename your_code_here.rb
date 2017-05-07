@@ -153,15 +153,11 @@ class ReimplementEnumerable
 
   def reverse_each
     result = []
-    index = 0
-    array = []
-    @collection.each do |element|
-      index += 1
-      array << element
-    end
-    index -= 1
+    index = @collection.size - 1
+
     while index >= 0
-      result << array[index]
+      yield @collection[index]
+      result << @collection[index]
       index -= 1
     end
     result
@@ -200,5 +196,9 @@ class ReimplementEnumerable
       end
     end
     result
+  end
+
+  def each_slice
+
   end
 end
